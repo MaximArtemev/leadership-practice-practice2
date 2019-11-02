@@ -45,15 +45,15 @@ class Model:
         data: dict with {name: pd.DataFrame}
         Method returns dataframe with predictions.
         """
-        train_users = data['users_train.csv']
+#        train_users = data['users_train.csv']
         test_users = data['users_test.csv']
-        posts = data['posts.csv']
-        model, tfidf = train(train_users.copy(), posts.copy())
-        preds = predict(test_users.copy(), posts.copy(), model, tfidf)
-        x = test_data["uid"]
+#        posts = data['posts.csv']
+#        model, tfidf = train(train_users.copy(), posts.copy())
+#        preds = predict(test_users.copy(), posts.copy(), model, tfidf)
+        x = test_users["uid"]
         pred = pd.DataFrame({
             "uid": x,
-            "is_leader": preds,
+            "is_leader": np.zeros(x.shape[0]),
         })
 
         return pred
