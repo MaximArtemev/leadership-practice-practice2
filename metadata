@@ -1,2 +1,1 @@
 command: python $program/submission_model.py $input $output
-
