@@ -1,5 +1,6 @@
 *.ipynb_checkpoints*
 *.csv
+*.zip
 *DS_Store*
 data/*
 !data/README.md
