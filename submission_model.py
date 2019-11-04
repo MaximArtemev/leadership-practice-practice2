@@ -54,5 +54,6 @@ class Model:
             "uid": x,
             "is_leader": np.zeros(len(x)),
         })
+        pred.index = pred.uid
         pred.loc[data_preds.index, 'is_leader'] = data_preds['pred']
-        return pred
+        return pred.reset_index(drop=True)
