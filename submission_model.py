@@ -33,9 +33,8 @@ def predict(users, posts, model, tfidf):
                                                       'comments': 'sum',
                                                       'likes': 'sum',
                                                       'reposts': 'sum'})
-    users.index = users.uid
-    users.drop('uid', axis=1, inplace=True)
-    return model.predict(tfidf.transform(data['text']))
+    data['pred'] = model.predict(tfidf.transform(data['text']))
+    return data
 
 
 
@@ -49,11 +48,11 @@ class Model:
         test_users = data['users_test.csv']
         posts = data['posts.csv']
         model, tfidf = train(train_users.copy(), posts.copy())
-        preds = predict(test_users.copy(), posts.copy(), model, tfidf)
+        data_preds = predict(test_users.copy(), posts.copy(), model, tfidf)
         x = test_users["uid"]
         pred = pd.DataFrame({
             "uid": x,
-            "is_leader": preds,
+            "is_leader": np.zeros(len(x)),
         })
-
+        pred.loc[data_preds.index, 'is_leader'] = data_preds['pred']
         return pred
