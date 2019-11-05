@@ -36,7 +36,6 @@ def predict(users, posts, model, tfidf):
     return data
 
 
-
 class Model:
     def run(self, data):
         """
