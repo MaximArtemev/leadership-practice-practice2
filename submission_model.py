@@ -3,7 +3,6 @@ import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 
-
 def train(users, posts):
     valid_users = np.unique(users['uid'])
     posts = posts[posts['from_id'].isin(valid_users)]
