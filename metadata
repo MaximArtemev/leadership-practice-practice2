@@ -1,2 +1,2 @@
-command: python $program/submission_model.py $input $output
+####### command: python $program/submission_model.py $input $output
 
