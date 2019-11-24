@@ -49,8 +49,8 @@ RUN pip3 install psycopg2-binary
 # DVC setup
 RUN pip3 install dvc[ssh]
 
-RUN pip3 install ipython[all]
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 
-ENTRYPOINT ["jupyter", "notebook", "--no-browser", "--allow-root", "--ip=0.0.0.0"]
+RUN ln -s /usr/bin/python3 /usr/bin/python
+
